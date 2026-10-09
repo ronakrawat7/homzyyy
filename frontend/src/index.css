@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 140 36% 97%;
+        --foreground: 160 51% 14%;
+        --card: 0 0% 100%;
+        --card-foreground: 160 51% 14%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 160 51% 14%;
+        --primary: 161 84% 30%;
+        --primary-foreground: 140 36% 97%;
+        --secondary: 140 33% 92%;
+        --secondary-foreground: 160 51% 14%;
+        --muted: 140 33% 92%;
+        --muted-foreground: 160 18% 36%;
+        --accent: 140 33% 92%;
+        --accent-foreground: 160 51% 14%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 140 30% 87%;
+        --input: 140 30% 87%;
+        --ring: 161 84% 30%;
+        --chart-1: 161 84% 30%;
+        --chart-2: 160 84% 39%;
+        --chart-3: 43 96% 56%;
+        --chart-4: 152 76% 80%;
+        --chart-5: 160 51% 14%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-cream text-pine font-body antialiased;
+        text-rendering: optimizeLegibility;
+    }
+    ::selection {
+        @apply bg-lime text-white;
+    }
+}
+
+/* film grain over everything, purely decorative */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+@layer utilities {
+    .font-serifit {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+    }
+    .text-stroke-pine {
+        -webkit-text-stroke: 1.5px rgba(15, 56, 44, 0.85);
+        color: transparent;
+    }
+    .text-stroke-cream {
+        -webkit-text-stroke: 1.5px rgba(244, 249, 245, 0.55);
+        color: transparent;
+    }
+}
+
+/* native range slider, brand styled */
+input[type="range"].brand-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(
+        to right,
+        #059669 0%,
+        #059669 var(--fill, 40%),
+        #D5E7DC var(--fill, 40%),
+        #D5E7DC 100%
+    );
+    outline: none;
+}
+input[type="range"].brand-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 26px;
+    width: 26px;
+    border-radius: 999px;
+    background: #0F382C;
+    border: 4px solid #10B981;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(15, 56, 44, 0.35);
+    transition: transform 0.15s ease;
+}
+input[type="range"].brand-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+}
+input[type="range"].brand-slider::-moz-range-thumb {
+    height: 22px;
+    width: 22px;
+    border-radius: 999px;
+    background: #0F382C;
+    border: 4px solid #10B981;
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-spin-slow {
+        animation: none;
+    }
+}
